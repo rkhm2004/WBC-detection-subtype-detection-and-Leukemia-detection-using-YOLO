@@ -62,7 +62,35 @@ The architecture acts as a funnel, capturing rich details at the input and disti
 - ~**1.2M parameters** only  
 - Runs at **30+ FPS** on Jetson Orin Nano  
 - Retains medical texture fidelity while pruning redundant fusion layers  
-- CBAM-enhanced backbone for stain noise suppression and morphology focus  
+- CBAM-enhanced backbone for stain noise suppression and morphology focus
+
+- ## 📊 Comparative Accuracy Analysis
+
+We evaluated **HemaliteV10** against a standard **Baseline (YOLOv10n)** across four diverse medical datasets.  
+The results highlight the model's ability to match or exceed the baseline in complex scenarios despite its reduced parameter count.
+
+| Dataset | Model        | mAP@50 | mAP@50-95 |
+|---------|--------------|--------|-----------|
+| **BCCD** (Blood Cell Count) | Baseline     | 0.93 | 0.69 |
+|                         | HemaliteV10  | 0.89 | 0.63 |
+| **PBC** (Peripheral Blood) | Baseline     | 0.99 | 0.99 |
+|                         | HemaliteV10  | **0.99** | **0.99** |
+| **B-ALL** (Leukemia)    | Baseline     | 0.98 | 0.76 |
+|                         | HemaliteV10  | 0.97 | 0.72 |
+| **yolo_new** (General Medical) | Baseline     | 0.97 | 0.87 |
+|                         | HemaliteV10  | **0.98** | **0.89** |
+
+---
+## ✅ Final Benchmark Results
+
+Performance comparison of HemaliteV10 across different deployment formats (PyTorch vs TensorRT).
+
+| Model             | Size (MB) | FPS   | Time (ms) | GFLOPs | Temp (°C) | RAM (%) | Power |
+|-------------------|-----------|-------|-----------|--------|-----------|---------|-------|
+| **PyTorch (CUDA)** | 2.77      | 28.42 | 35.18     | 6.2    | 50.1      | 62.1    | 15W   |
+| **FP32 (TensorRT)** | 7.26      | 33.65 | 29.72     | 6.2    | 49.8      | 63.7    | 15W   |
+| **FP16 (TensorRT)** | 5.61      | 40.97 | 24.41     | 6.2    | 49.8      | 64.0    | 15W   |
+| **INT8 (TensorRT)** | 3.98      | 50.85 | 19.66     | 6.2    | 50.0      | 65.5    | 15W   |
 
 ---
 
