@@ -121,20 +121,7 @@ We evaluated **Frankenstein_MGDA** across multiple datasets (including PBC). The
 
 ---
 
-## 🛠️ Installation & Usage
 
-### 1. Requirements
-
-pip install ultralytics torch torchvision opencv-python psutil
-
-
-
-
-
-
----
----
----
 
 
 ## 👥 Contributors
