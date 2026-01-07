@@ -45,6 +45,8 @@ We evaluated **HemaliteV10** against a standard **Baseline (YOLOv10n)** across f
 
 
 
+---
+
 
 # 🧟 Frankenstein_MGDA: Multi-Granularity Domain Adaptation
 
