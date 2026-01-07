@@ -1,0 +1,13 @@
+# base_paper.yaml
+
+# 1. Point to YOUR local folder
+path: D:\SEM  - 4\OS\Frakenstein_MGDA_Project\datasets\yolo_new\yolo_new
+
+# 2. Sub-folders
+train: train/images
+val: val/images
+test: test/images
+
+# 3. Classes (5 Types)
+nc: 5
+names: ['baso', 'eosi', 'lymp', 'mono', 'neut']

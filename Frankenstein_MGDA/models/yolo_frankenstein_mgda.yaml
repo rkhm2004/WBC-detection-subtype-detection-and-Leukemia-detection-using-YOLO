@@ -1,0 +1,55 @@
+# Frankenstein-MGDA Project
+# Architecture: Version 4 (Fire Modules + Attention + Diet Head)
+# Role: Inference Model (The MGDA branches attach EXTERNALLY during training)
+
+nc: 3  # Change this to 1 if you are only detecting "Abnormality"
+scales:
+  n: [0.50, 0.25, 1024] 
+
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]]  # 0-P1/2
+
+  # --- FIRE MODULES (The Lightweight Body) ---
+  # Standard Conv 1x1 used to simulate Fire squeeze/expand for compatibility
+  - [-1, 1, Conv, [16, 1, 1]]  # 1
+  - [-1, 1, Conv, [64, 1, 1]]  # 2
+  - [-1, 1, Conv, [128, 3, 2]] # 3-P2/4
+
+  - [-1, 1, Conv, [32, 1, 1]]  # 4
+  - [-1, 1, Conv, [128, 1, 1]] # 5
+  - [-1, 1, Conv, [256, 3, 2]] # 6-P3/8
+
+  - [-1, 1, Conv, [64, 1, 1]]  # 7
+  - [-1, 1, Conv, [256, 1, 1]] # 8-P3 (Feature Map 80x80) <--- MGDA HOOK 1 (SR Decoder)
+
+  - [-1, 1, Conv, [512, 3, 2]] # 9-P4/16
+
+  - [-1, 1, Conv, [128, 1, 1]] # 10
+  - [-1, 1, Conv, [512, 1, 1]] # 11
+  - [-1, 1, C2PSA, [512]]      # 12-P4 (Attention) <--- MGDA HOOK 2 (Attn Loss)
+
+  - [-1, 1, Conv, [1024, 3, 2]] # 13-P5/32
+  
+  - [-1, 1, SPPF, [1024, 5]]    # 14
+  - [-1, 1, C2PSA, [1024]]      # 15-P5 (Attention) <--- MGDA HOOK 3 (Attn Loss)
+
+head:
+  # --- DIET HEAD (Pruned Channels) ---
+  - [-1, 1, nn.Upsample, [None, 2, 'nearest']]
+  - [[-1, 12], 1, Concat, [1]] 
+  - [-1, 1, C3k2, [256, False]] # 18
+
+  - [-1, 1, nn.Upsample, [None, 2, 'nearest']]
+  - [[-1, 8], 1, Concat, [1]] 
+  - [-1, 1, C3k2, [128, False]] # 21
+
+  - [-1, 1, Conv, [128, 3, 2]]
+  - [[-1, 18], 1, Concat, [1]]
+  - [-1, 1, C3k2, [256, False]] # 24 <--- MGDA HOOK 4 (GRL Branch)
+
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 15], 1, Concat, [1]]
+  - [-1, 1, C3k2, [512, True]] # 27 <--- MGDA HOOK 4 (GRL Branch)
+
+  - [[21, 24, 27], 1, Detect, [nc]] # 28

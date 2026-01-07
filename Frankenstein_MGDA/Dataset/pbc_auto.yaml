@@ -1,0 +1,11 @@
+path: D:\PROJECTS\SEM 4\OS\WBC_project\yolo_pbc
+train: images/train
+val: images/val
+nc: 6
+names:
+  0: Neutrophil
+  1: Lymphocyte
+  2: Monocyte
+  3: Eosinophil
+  4: Basophil
+  5: Erythroblast

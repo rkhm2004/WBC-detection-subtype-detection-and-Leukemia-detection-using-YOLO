@@ -1,0 +1,8 @@
+path: D:\SEM  - 4\OS\Frakenstein_MGDA_Project\datasets\BCCD_YOLO
+train: train/images
+val: valid/images
+nc: 3
+names:
+  0: Platelets
+  1: RBC
+  2: WBC

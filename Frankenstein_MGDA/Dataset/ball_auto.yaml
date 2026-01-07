@@ -1,0 +1,9 @@
+path: D:\PROJECTS\SEM 4\OS\WBC_project\dataset\B-ALL
+train: train/images
+val: valid/images
+nc: 4
+names:
+  0: Benign
+  1: Early
+  2: Pre
+  3: Pro

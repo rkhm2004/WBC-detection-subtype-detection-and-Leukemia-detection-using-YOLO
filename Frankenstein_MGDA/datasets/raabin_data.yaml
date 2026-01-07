@@ -1,0 +1,16 @@
+# Raabin-WBC Configuration (Correct Split)
+path: D:/SEM  - 4/OS/Frakenstein_MGDA_Project/datasets/Raabin_YOLO
+
+# Now we have distinct folders!
+train: images/train  # 80% of data (Learn colors here)
+val:   images/val    # 20% of data (Test accuracy here)
+test:  images/val    # Use val set for testing
+
+nc: 6 
+names:
+  0: Neutrophil
+  1: Lymphocyte
+  2: Monocyte
+  3: Eosinophil
+  4: Basophil
+  5: Erythroblast

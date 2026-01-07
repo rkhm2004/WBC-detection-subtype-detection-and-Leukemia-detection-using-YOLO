@@ -1,0 +1,29 @@
+<<<<<<< HEAD
+ultralytics>=8.3.0
+torch>=2.0.0
+torchvision>=0.15.0
+polars  # <--- This fixes the warning you saw!
+opencv-python
+matplotlib
+numpy
+pyyaml
+=======
+# Core YOLO & Deep Learning
+ultralytics>=8.2.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Image Processing & Data Handling
+opencv-python>=4.8.0
+pandas>=2.0.0
+numpy>=1.23.0
+Pillow>=10.0.0
+
+# System Monitoring (for benchmarking scripts)
+psutil>=5.9.0
+
+# Visualization (Optional but recommended for YOLO)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+tqdm>=4.65.0
+>>>>>>> 8b40f20a7c8384af48cb6e15229ec745312f28e6

@@ -1,0 +1,12 @@
+path: d:\SEM  - 4\OS\WBC_DATASET\PBC_DATASET
+train: images/train
+val: images/val
+test: images/test
+nc: 6
+names:
+  0: Neutrophil
+  1: Lymphocyte
+  2: Monocyte
+  3: Eosinophil
+  4: Basophil
+  5: Erythroblast

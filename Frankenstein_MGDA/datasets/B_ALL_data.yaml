@@ -1,0 +1,10 @@
+path: D:\SEM  - 4\OS\Frakenstein_MGDA_Project\datasets\B-ALL
+train: train/images
+val: valid/images
+test: test/images
+nc: 4
+names:
+  0: Benign
+  1: Early
+  2: Pre
+  3: Pro
