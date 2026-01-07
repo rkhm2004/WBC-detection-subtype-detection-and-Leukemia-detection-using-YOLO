@@ -1,0 +1,18 @@
+# Core YOLO & Deep Learning
+ultralytics>=8.2.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Image Processing & Data Handling
+opencv-python>=4.8.0
+pandas>=2.0.0
+numpy>=1.23.0
+Pillow>=10.0.0
+
+# System Monitoring (for benchmarking scripts)
+psutil>=5.9.0
+
+# Visualization (Optional but recommended for YOLO)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+tqdm>=4.65.0
