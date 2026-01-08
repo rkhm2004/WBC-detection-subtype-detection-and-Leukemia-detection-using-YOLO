@@ -1,8 +1,0 @@
-path: D:\PROJECTS\SEM 4\OS\WBC_project\yolo_bccd_datamaster
-train: images/train
-val: images/val
-nc: 3
-names:
-  0: RBC
-  1: WBC
-  2: Platelets
